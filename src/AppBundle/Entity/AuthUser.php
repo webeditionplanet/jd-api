@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Class AuthUser
@@ -12,25 +14,65 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="auth_user",
  *     uniqueConstraints={@ORM\UniqueConstraint(name="auth_user_login",columns={"login"})}
  * )
+ * @UniqueEntity("login")
  */
 class AuthUser implements UserInterface
 {
     /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     *
+     * @var int
+     */
+    private $id;
+
+    /**
      * @var string
      * @ORM\Column(type="string")
+     * @Assert\Type(
+     *     type="string"
+     * )
+     * @Assert\Email()
+     * @Assert\NotBlank()
      */
     private $login;
 
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(
+     *     type="string"
+     * )
      */
     private $password;
 
     /**
      * @var string
+     * @Assert\Type(type="string")
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 50
+     * )
      */
     private $plainPassword;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     * @return AuthUser
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * @return mixed

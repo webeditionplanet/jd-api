@@ -2,6 +2,8 @@
 
 namespace AppBundle\Model;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Class Credentials
  */
@@ -9,11 +11,19 @@ class Credentials
 {
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Type(
+     *     type="string"
+     * )
      */
     private $login;
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Type(
+     *     type="string"
+     * )
      */
     private $password;
 

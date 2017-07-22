@@ -1,0 +1,9 @@
+AppBundle\Entity\AuthUser:
+    exclusion_policy: none
+    properties:
+        id:
+            groups: ['user', 'auth-token']
+        login:
+            groups: ['user', 'auth-token']
+        password:
+            groups: ['user', 'auth-token']

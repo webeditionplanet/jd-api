@@ -2624,7 +2624,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-07-04 06:03:16"
+            "time": "2017-07-05 13:28:34"
         },
         {
             "name": "twig/twig",
@@ -2838,7 +2838,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2017-03-15 01:02:10"
+            "time": "2017-07-12 17:28:00"
         },
         {
             "name": "symfony/phpunit-bridge",
